@@ -1,0 +1,426 @@
+RewriteEngine On
+
+Options -Indexes
+
+##RewriteCond %{HTTP_HOST} ^(www.gesundeseiten.at)$ [NC]
+##RewriteRule ^.*stage1.*$ /Connections/xxx.php?stage=%1 [L]
+##RewriteRule ^.*/Connections/xxx.*$ /stage1 [L]
+
+## ACHTUNG: Funkt nicht bei WWW.virag-keg.com sondern nur bei virag-keg.com
+##RewriteCond %{HTTP_HOST} ^(virag-keg.com)$ [NC]
+##RewriteRule ^(.*)$ http://www.enjoyliving.at/site_12_1/virag-keg/$1 [R=301,L]
+
+
+###Wenn die Seite keine www.gesundeseiten.at ist, dann schreib sie um.
+##Wenn die Seite eine www.gesundeseiten.at/gesundheits-magazin ist, schreib sie auch um. 
+
+RewriteRule ^login.php$ /site_12_1/admin/Login.php [QSA,L]
+
+RewriteCond %{HTTP_HOST} !^(www.enjoyliving.at)$ [NC]
+RewriteCond %{HTTP_HOST} !^(www.mangoo.at)$ [NC]
+RewriteCond %{HTTP_HOST} !^(www.familiespatz.at)$ [NC]
+RewriteCond %{HTTP_HOST} !^(www.gardenandliving.at)$ [NC]
+RewriteCond %{HTTP_HOST} !^(www.gardenandliving.de)$ [NC]
+RewriteCond %{HTTP_HOST} !^(www.enjoyliving.tv)$ [NC]
+RewriteCond %{HTTP_HOST} !^(www.purelywoman.at)$ [NC]
+RewriteCond %{HTTP_HOST} !^(www.purelywoman.de)$ [NC]
+RewriteCond %{HTTP_HOST} !^(www.gesundeseiten.at)$ [NC]
+RewriteCond %{HTTP_HOST} !^(www.tsm-law.at)$ [NC]
+RewriteCond %{HTTP_HOST} !^(www.tsm-law.eu)$ [NC]
+RewriteCond %{HTTP_HOST} !^(www.tsrm.at)$ [NC]
+RewriteRule ^(.*)$ http://www.enjoyliving.at/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^(www.gesundeseiten.at)$ [NC]
+RewriteRule ^/([a-z0-9_-])-magazin(.*)$ http://www.enjoyliving.at/$1-magazin$2 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^(www.enjoyliving.at)$ [NC]
+RewriteRule ^anbieter/(.*)$ http://www.gesundeseiten.at/anbieter/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^(www.tsm-law.at)$ [NC]
+RewriteRule ^(.*)$ http://www.tsrm.at/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^(www.tsm-law.eu)$ [NC]
+RewriteRule ^(.*)$ http://www.tsrm.at/$1 [R=301,L]
+
+
+#############################################VERZEICHNIS NEU
+#############################################verzeichnis only
+##DE
+RewriteRule ^de/gesundeseiten/$ /gesundeseiten/index_de.php?land=de [L]
+RewriteRule ^de/gesundeseiten/$ /gesundeseiten/index_de.php?land=de [L]
+##AT
+RewriteRule ^verzeichnis/$ /gesundeseiten/index.php [L]
+RewriteRule ^gesundeseiten/$ /gesundeseiten/index.php [L]
+
+RewriteRule ^verzeichnis$ /gesundeseiten/index.php [L]
+RewriteRule ^gesundeseiten$ /gesundeseiten/index.php [L]
+
+RewriteRule ^verzeichnis,suchbegriffe$ /gesundeseiten/index.php?do=suchbegriffe [L]
+RewriteRule ^gesundeseiten,suchbegriffe$ /gesundeseiten/index.php?do=suchbegriffe [L]
+
+RewriteRule ^verzeichnis,neue$ /gesundeseiten/index.php?do=neue [L]
+RewriteRule ^gesundeseiten,neue$ /gesundeseiten/index.php?do=neue [L]
+
+RewriteRule ^verzeichnis,merkliste$ /gesundeseiten/index.php?do=merkliste [L]
+RewriteRule ^gesundeseiten,merkliste$ /gesundeseiten/index.php?do=merkliste [L]
+
+RewriteRule ^verzeichnis,suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?search=1&suchbegriff=$1&stadt=$2&bundesland=$3&dosearch=all [L]
+RewriteRule ^verzeichnis,suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?search=1&suchbegriff=$1&stadt=$2&bundesland=$3&dosearch=$4 [L]
+RewriteRule ^gesundeseiten,suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?search=1&suchbegriff=$1&stadt=$2&bundesland=$3&dosearch=$4 [L]
+
+
+RewriteRule ^verzeichnis,suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?search=1&suchbegriff=$1&stadt=$2&bundesland=$3&pos=$4&dosearch=all [L]
+RewriteRule ^verzeichnis,suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?search=1&suchbegriff=$1&stadt=$2&bundesland=$3&pos=$5&dosearch=$4 [L]
+RewriteRule ^gesundeseiten,suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?search=1&suchbegriff=$1&stadt=$2&bundesland=$3&pos=$5&dosearch=$4 [L]
+#################################################Verzeichnis channel
+RewriteRule ^verzeichnis/([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1 [L]
+RewriteRule ^gesundeseiten/([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1 [L]
+
+RewriteRule ^verzeichnis/([0-9a-z_-]+)/$ /gesundeseiten/index.php?channelA=$1 [L]
+RewriteRule ^gesundeseiten/([0-9a-z_-]+)/$ /gesundeseiten/index.php?channelA=$1 [L]
+
+RewriteRule ^verzeichnis/([0-9a-z_-]+),suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&search=1&suchbegriff=$2&stadt=$3&bundesland=$4&pos=$5&dosearch=select [L]
+RewriteRule ^gesundeseiten/([0-9a-z_-]+),suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&search=1&suchbegriff=$2&stadt=$3&bundesland=$4&pos=$5&dosearch=select [L]
+RewriteRule ^verzeichnis/([0-9a-z_-]+),suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&search=1&suchbegriff=$2&stadt=$3&bundesland=$4&pos=$6&dosearch=$5 [L]
+RewriteRule ^gesundeseiten/([0-9a-z_-]+),suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&search=1&suchbegriff=$2&stadt=$3&bundesland=$4&pos=$6&dosearch=$5 [L]
+##################################################Verzeichnis maincat
+RewriteRule ^verzeichnis/([0-9a-z_-]+)/([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2 [L]
+RewriteRule ^gesundeseiten/([0-9a-z_-]+)/([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2 [L]
+
+RewriteRule ^verzeichnis/([0-9a-z_-]+)/([0-9a-z_-]+)/$ /gesundeseiten/index.php?channelA=$1&maincatA=$2 [L]
+RewriteRule ^gesundeseiten/([0-9a-z_-]+)/([0-9a-z_-]+)/$ /gesundeseiten/index.php?channelA=$1&maincatA=$2 [L]
+
+RewriteRule ^verzeichnis/([0-9a-z_-]+)/([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&pos=$3 [L]
+RewriteRule ^gesundeseiten/([0-9a-z_-]+)/([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&pos=$3 [L]
+
+RewriteRule ^verzeichnis/([0-9a-z_-]+)/([0-9a-z_-]+),suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&search=1&suchbegriff=$3&stadt=$4&bundesland=$5&pos=$6&dosearch=select [L]
+RewriteRule ^gesundeseiten/([0-9a-z_-]+)/([0-9a-z_-]+),suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&search=1&suchbegriff=$3&stadt=$4&bundesland=$5&pos=$6&dosearch=select [L]
+RewriteRule ^verzeichnis/([0-9a-z_-]+)/([0-9a-z_-]+),suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&search=1&suchbegriff=$3&stadt=$4&bundesland=$5&pos=$7&dosearch=$6 [L]
+RewriteRule ^gesundeseiten/([0-9a-z_-]+)/([0-9a-z_-]+),suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&search=1&suchbegriff=$3&stadt=$4&bundesland=$5&pos=$7&dosearch=$6 [L]
+################################################Verzeichnis subcat
+RewriteRule ^verzeichnis/([0-9a-z_-]+)/([0-9a-z_-]+)/([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&subcatA=$3 [L]
+RewriteRule ^gesundeseiten/([0-9a-z_-]+)/([0-9a-z_-]+)/([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&subcatA=$3 [L]
+
+RewriteRule ^verzeichnis/([0-9a-z_-]+)/([0-9a-z_-]+)/([0-9a-z_-]+)/$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&subcatA=$3 [L]
+RewriteRule ^gesundeseiten/([0-9a-z_-]+)/([0-9a-z_-]+)/([0-9a-z_-]+)/$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&subcatA=$3 [L]
+
+RewriteRule ^verzeichnis/([0-9a-z_-]+)/([0-9a-z_-]+)/([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&subcatA=$3&pos=$4 [L]
+RewriteRule ^gesundeseiten/([0-9a-z_-]+)/([0-9a-z_-]+)/([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&subcatA=$3&pos=$4 [L]
+
+RewriteRule ^verzeichnis/([0-9a-z_-]+)/([0-9a-z_-]+)/([0-9a-z_-]+),suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&subcatA=$3&search=1&suchbegriff=$4&stadt=$5&bundesland=$6&pos=$7&dosearch=select [L]
+RewriteRule ^gesundeseiten/([0-9a-z_-]+)/([0-9a-z_-]+)/([0-9a-z_-]+),suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&subcatA=$3&search=1&suchbegriff=$4&stadt=$5&bundesland=$6&pos=$7&dosearch=select [L]
+RewriteRule ^verzeichnis/([0-9a-z_-]+)/([0-9a-z_-]+)/([0-9a-z_-]+),suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&subcatA=$3&search=1&suchbegriff=$4&stadt=$5&bundesland=$6&pos=$8&dosearch=$7 [L]
+RewriteRule ^gesundeseiten/([0-9a-z_-]+)/([0-9a-z_-]+)/([0-9a-z_-]+),suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/index.php?channelA=$1&maincatA=$2&subcatA=$3&search=1&suchbegriff=$4&stadt=$5&bundesland=$6&pos=$8&dosearch=$7 [L]
+
+############################################KJALENDER
+RewriteRule ^gesundeseiten-kalender/$ /gesundeseiten/kalender.php [L]
+RewriteRule ^kalender/$ /gesundeseiten/kalender.php [L]
+
+RewriteRule ^gesundeseiten-kalender$ /gesundeseiten/kalender.php [L]
+RewriteRule ^kalender$ /gesundeseiten/kalender.php [L]
+
+RewriteRule ^gesundeseiten-kalender,merkliste$ /gesundeseiten/kalender.php?do=merkliste [L]
+RewriteRule ^kalender,merkliste$ /gesundeseiten/kalender.php?do=merkliste [L]
+
+RewriteRule ^page/gesundeseiten-kalender,([0-9a-z_-]+)$ /gesundeseiten/kalender.php?pos=$1 [L]
+RewriteRule ^gesundeseiten-kalender,([0-9a-z_-]+)$ /gesundeseiten/kalender.php?pos=$1 [L]
+RewriteRule ^kalender,([0-9a-z_-]+)$ /gesundeseiten/kalender.php?pos=$1 [L]
+
+RewriteRule ^page/gesundeseiten-kalender,suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/kalender.php?searcher=1&suchbegriff=$1&stadt=$2&DAY_DATE=$3&MONTH_DATE=$4&DAY_RDATE=$5&MONTH_RDATE=$6 [L]
+RewriteRule ^gesundeseiten-kalender,suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/kalender.php?searcher=1&suchbegriff=$1&stadt=$2&DAY_DATE=$3&MONTH_DATE=$4&DAY_RDATE=$5&MONTH_RDATE=$6 [L]
+RewriteRule ^page/kalender,suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/kalender.php?searcher=1&suchbegriff=$1&stadt=$2&DAY_DATE=$3&MONTH_DATE=$4&DAY_RDATE=$5&MONTH_RDATE=$6 [L]
+RewriteRule ^kalender,suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/kalender.php?searcher=1&suchbegriff=$1&stadt=$2&DAY_DATE=$3&MONTH_DATE=$4&DAY_RDATE=$5&MONTH_RDATE=$6 [L]
+
+RewriteRule ^page/gesundeseiten-kalender,suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/kalender.php?searcher=1&suchbegriff=$1&stadt=$2&DAY_DATE=$3&MONTH_DATE=$4&DAY_RDATE=$5&MONTH_RDATE=$6&pos=$7 [L]
+RewriteRule ^gesundeseiten-kalender,suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/kalender.php?searcher=1&suchbegriff=$1&stadt=$2&DAY_DATE=$3&MONTH_DATE=$4&DAY_RDATE=$5&MONTH_RDATE=$6&pos=$7 [L]
+RewriteRule ^page/kalender,suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/kalender.php?searcher=1&suchbegriff=$1&stadt=$2&DAY_DATE=$3&MONTH_DATE=$4&DAY_RDATE=$5&MONTH_RDATE=$6&pos=$7 [L]
+RewriteRule ^kalender,suche,([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/kalender.php?searcher=1&suchbegriff=$1&stadt=$2&DAY_DATE=$3&MONTH_DATE=$4&DAY_RDATE=$5&MONTH_RDATE=$6&pos=$7 [L]
+############################################## ANGEBOTE
+RewriteRule ^page/gesundeseiten-angebote/$ /gesundeseiten/angebote.php [L]
+RewriteRule ^gesundeseiten-angebote/$ /gesundeseiten/angebote.php [L]
+RewriteRule ^angebote/$ /gesundeseiten/angebote.php [L]
+
+RewriteRule ^page/gesundeseiten-angebote$ /gesundeseiten/angebote.php [L]
+RewriteRule ^gesundeseiten-angebote$ /gesundeseiten/angebote.php [L]
+RewriteRule ^angebote$ /gesundeseiten/angebote.php [L]
+RewriteRule ^angebote,merkliste$ /gesundeseiten/angebote.php?do=merkliste [L]
+
+RewriteRule ^gesundeseiten-angebote,([0-9a-z_-]+)$ /gesundeseiten/angebote.php?pos=$1 [L]
+RewriteRule ^angebote,([0-9a-z_-]+)$ /gesundeseiten/angebote.php?pos=$1 [L]
+
+RewriteRule ^gesundeseiten-angebote,suche,([0-9a-z_-]+)$ /gesundeseiten/angebote.php?searcher=1&suchbegriff=$1 [L]
+RewriteRule ^angebote,suche,([0-9a-z_-]+)$ /gesundeseiten/angebote.php?searcher=1&suchbegriff=$1 [L]
+
+RewriteRule ^gesundeseiten-angebote,suche,([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/angebote.php?searcher=1&suchbegriff=$1&pos=$2 [L]
+RewriteRule ^angebote,suche,([0-9a-z_-]+),([0-9a-z_-]+)$ /gesundeseiten/angebote.php?searcher=1&suchbegriff=$1&pos=$2 [L]
+#############################################Visitenkarte NEU
+
+RewriteRule ^anbieter/([0-9]+)-([0-9]+),([0-9]+),$ /page/guide/basic.php?page=$1&fid=$3&evid=$2 [L]
+RewriteRule ^anbieter/([0-9]+)-([0-9]+),([0-9]+)$ /page/guide/basic.php?page=$1&fid=$3&evid=$2 [L]
+RewriteRule ^anbieter/([0-9]+)-([0-9]+),([0-9]+),([0-9]+)$ /page/guide/basic.php?page=$1&fid=$3&evid=$2&no=$4 [L]
+RewriteRule ^anbieter/([0-9]+)-([0-9]+),([0-9]+),([0-9]+),$ /page/guide/basic.php?page=$1&fid=$3&evid=$2&no=$4 [L]
+
+RewriteRule ^anbieter/([0-9]+)-1-([0-9]+),([0-9]+),$ /page/guide/basic.php?page=$1&fid=$3&evid=$2&eintrag=3 [L]
+RewriteRule ^anbieter/([0-9]+)-1-([0-9]+),([0-9]+)$ /page/guide/basic.php?page=$1&fid=$3&evid=$2&eintrag=3 [L]
+RewriteRule ^anbieter/([0-9]+)-1-([0-9]+),([0-9]+),([0-9]+)$ /page/guide/basic.php?page=$1&fid=$3&evid=$2&no=$4&eintrag=3 [L]
+RewriteRule ^anbieter/([0-9]+)-1-([0-9]+),([0-9]+),([0-9]+),$ /page/guide/basic.php?page=$1&fid=$3&evid=$2&no=$4&eintrag=3 [L]
+
+RewriteRule ^anbieter/([0-9]+),([0-9]+),([0-9]+)$ /page/guide/basic.php?page=$1&fid=$2&no=$3 [L]
+RewriteRule ^anbieter/([0-9]+),([0-9]+),([0-9]+),$ /page/guide/basic.php?page=$1&fid=$2&no=$3 [L]
+RewriteRule ^anbieter/([0-9]+),([0-9a-z_-]+)$ /page/guide/basic.php?page=$1&fid=$2 [L]
+RewriteRule ^anbieter/([0-9]+),([0-9a-z_-]+),$ /page/guide/basic.php?page=$1&fid=$2 [L]
+####anbieter subdomain
+RewriteRule ^([0-9a-z_-]+).enjoyliving.at$ /page/guide/basic.php?page=1&fid=$1 [L]
+
+RewriteRule ^anbieter/([0-9]+),([0-9]+),([0-9]+),angebot([0-9]+),$ /page/guide/basic.php?page=$1&fid=$2&no=$3&of_id=$4 [L]
+RewriteRule ^anbieter/([0-9]+),([0-9]+),([0-9]+),angebot([0-9]+)$ /page/guide/basic.php?page=$1&fid=$2&no=$3&of_id=$4 [L]
+RewriteRule ^anbieter/([0-9]+),([0-9]+),angebot([0-9]+),$ /page/guide/basic.php?page=$1&fid=$2&of_id=$3 [L]
+RewriteRule ^anbieter/([0-9]+),([0-9]+),angebot([0-9]+)$ /page/guide/basic.php?page=$1&fid=$2&of_id=$3 [L]
+
+RewriteRule ^anbieter/([0-9]+),([0-9]+),([0-9]+),veranstaltung([0-9]+),$ /page/guide/basic.php?page=$1&fid=$2&no=$3&eve_id=$4 [L]
+RewriteRule ^anbieter/([0-9]+),([0-9]+),([0-9]+),veranstaltung([0-9]+)$ /page/guide/basic.php?page=$1&fid=$2&no=$3&eve_id=$4 [L]
+RewriteRule ^anbieter/([0-9]+),([0-9]+),veranstaltung([0-9]+),$ /page/guide/basic.php?page=$1&fid=$2&eve_id=$3 [L]
+RewriteRule ^anbieter/([0-9]+),([0-9]+),veranstaltung([0-9]+)$ /page/guide/basic.php?page=$1&fid=$2&eve_id=$3 [L]
+RewriteRule ^anbieter/([0-9]+)/artikeldetail,([0-9a-z_-]+)$ /page/guide/basic.php?page=6&fid=$1&id=$2 [L]
+
+##############################PREMIUM EINTRAG
+RewriteRule ^web/([0-9a-z_-]+)$ /guide/var0/index.php?id=$1 [L]
+RewriteRule ^web/([0-9a-z_-]+)/$ /guide/var0/index.php?id=$1 [L]
+RewriteRule ^web/([0-9a-z_-]+)/offers.php /guide/var0/index.php?id=$1 [L]
+
+################webguide premium
+RewriteRule ^([0-9a-z_-]+)-web/$ /guide/var0/page.php?googleweburl=$1&page=content [L]
+RewriteRule ^([0-9a-z_-]+)-web$ /guide/var0/page.php?googleweburl=$1&page=content [L]
+RewriteRule ^([0-9a-z_-]+)-web/page$ /guide/var0/page.php?googleweburl=$1&page=content [L]
+RewriteRule ^([0-9a-z_-]+)-web/page/$ /guide/var0/page.php?googleweburl=$1&page=content [L]
+RewriteRule ^([0-9a-z_-]+)-web/page,([0-9a-z_-]+)$ /guide/var0/page.php?googleweburl=$1&page=content&code=$2 [L]
+RewriteRule ^([0-9a-z_-]+)-web/page,([0-9a-z_-]+),([0-9a-z_-]+)$ /guide/var0/page.php?googleweburl=$1&page=content&code=$2&sub=$3 [L]
+RewriteRule ^([0-9a-z_-]+)-web/angebote$ /guide/var0/page.php?googleweburl=$1&page=offer [L]
+RewriteRule ^([0-9a-z_-]+)-web/angebote,([0-9a-z_-]+)$ /guide/var0/page.php?googleweburl=$1&page=offer&ang_id=$2 [L]
+RewriteRule ^([0-9a-z_-]+)-web/veranstaltungen$ /guide/var0/page.php?googleweburl=$1&page=event [L]
+RewriteRule ^([0-9a-z_-]+)-web/veranstaltungen,([0-9a-z_-]+)$ /guide/var0/page.php?googleweburl=$1&page=event&eve_id=$2 [L]
+RewriteRule ^([0-9a-z_-]+)-web/veranstaltungen,([0-9a-z_-]+),anmelden$ /guide/var0/page.php?googleweburl=$1&page=event&eve_id=$2&anmelden=1 [L]
+RewriteRule ^([0-9a-z_-]+)-web/guestbook$ /guide/var0/page.php?googleweburl=$1&page=guestbook [L]
+RewriteRule ^([0-9a-z_-]+)-web/guestbook,beitrag$ /guide/var0/page.php?googleweburl=$1&page=guestbook&write=1 [L]
+RewriteRule ^([0-9a-z_-]+)-web/branchen$ /guide/var0/page.php?googleweburl=$1&page=branchen [L]
+RewriteRule ^([0-9a-z_-]+)-web/oeffnungszeiten$ /guide/var0/page.php?googleweburl=$1&page=open [L]
+
+
+
+
+#####neue Variante site_12_1
+
+##RewriteCond %{REQUEST_FILENAME} !/page/thumb.php
+##RewriteCond %{REQUEST_FILENAME} !/gesundeseiten/index_de.php
+##RewriteCond %{REQUEST_FILENAME} !/gesundeseiten/index.php
+##RewriteCond %{REQUEST_FILENAME} !/page/verzeichnis.php
+##RewriteCond %{REQUEST_FILENAME} !/gesundeseiten/kalender.php
+##RewriteCond %{REQUEST_FILENAME} !/gesundeseiten/angebote.php
+##RewriteCond %{REQUEST_FILENAME} !/page/guide/basic.php
+##RewriteCond %{REQUEST_FILENAME} !/guide/var0/index.php
+##RewriteCond %{REQUEST_FILENAME} !/site_12_1/basislayout.php
+
+
+
+
+##php seiten
+RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
+RewriteCond %{HTTP_HOST} !^www.tsrm.at$ [NC]
+RewriteCond %{REQUEST_FILENAME} !^.*(gif|jpg|png|css|ico)$
+RewriteCond %{REQUEST_FILENAME} !/phpMyAdmin-enjftfxb.*
+RewriteCond %{REQUEST_FILENAME} !/site_12_1.*
+RewriteCond %{REQUEST_FILENAME} !/statistik.*
+RewriteCond %{REQUEST_FILENAME} !/Connections.*
+RewriteCond %{REQUEST_FILENAME} !/.htaccess|/401error.htm|/blank.htm|/favicon.ico|/google.php|/google02fd1b76945c579f.html|/index.php|/robots.txt
+RewriteCond %{REQUEST_FILENAME} !/xml.*
+RewriteCond %{REQUEST_FILENAME} !/mtool.*
+RewriteCond %{REQUEST_FILENAME} !/myenjoyliving.*
+RewriteCond %{REQUEST_FILENAME} !/private.*
+RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
+RewriteCond %{REQUEST_FILENAME} !/web.*
+RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteRule ^(.*).php$ /site_12_1/basislayout.php?googleurl=/$1.php [QSA,L]
+
+RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
+RewriteCond %{HTTP_HOST} !^www.tsrm.at$ [NC]
+RewriteCond %{REQUEST_FILENAME} !^.*(gif|jpg|png|css|ico)$
+RewriteCond %{REQUEST_FILENAME} !/phpMyAdmin-enjftfxb.*
+RewriteCond %{REQUEST_FILENAME} !/site_12_1.*
+RewriteCond %{REQUEST_FILENAME} !/statistik.*
+RewriteCond %{REQUEST_FILENAME} !/Connections.*
+RewriteCond %{REQUEST_FILENAME} !/.htaccess|/401error.htm|/blank.htm|/favicon.ico|/google.php|/google02fd1b76945c579f.html|/index.php|/robots.txt
+RewriteCond %{REQUEST_FILENAME} !/xml.*
+RewriteCond %{REQUEST_FILENAME} !/mtool.*
+RewriteCond %{REQUEST_FILENAME} !/myenjoyliving.*
+RewriteCond %{REQUEST_FILENAME} !/private.*
+RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
+RewriteCond %{REQUEST_FILENAME} !/web.*
+RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteRule ^(.*).php/(.*)$ /site_12_1/basislayout.php?googleurl=/$1.php/$2 [QSA,L]
+
+
+###html seiten
+RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
+RewriteCond %{HTTP_HOST} !^www.tsrm.at$ [NC]
+RewriteCond %{REQUEST_FILENAME} !^.*(gif|jpg|png|css|ico|txt)$
+RewriteCond %{REQUEST_FILENAME} !/phpMyAdmin-enjftfxb.*
+RewriteCond %{REQUEST_FILENAME} !/site_12_1.*
+RewriteCond %{REQUEST_FILENAME} !/statistik.*
+RewriteCond %{REQUEST_FILENAME} !/Connections.*
+RewriteCond %{REQUEST_FILENAME} !/.htaccess|/401error.htm|/blank.htm|/favicon.ico|/google.php|/google02fd1b76945c579f.html|/index.php|/robots.txt
+RewriteCond %{REQUEST_FILENAME} !/xml.*
+RewriteCond %{REQUEST_FILENAME} !/mtool.*
+RewriteCond %{REQUEST_FILENAME} !/myenjoyliving.*
+RewriteCond %{REQUEST_FILENAME} !/private.*
+RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
+RewriteCond %{REQUEST_FILENAME} !/web.*
+RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteRule ^(.*).html$ /site_12_1/basislayout.php?googleurl=/$1.html [QSA,L]
+
+RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
+RewriteCond %{HTTP_HOST} !^www.tsrm.at$ [NC]
+RewriteCond %{REQUEST_FILENAME} !^.*(gif|jpg|png|css|ico|txt)$
+RewriteCond %{REQUEST_FILENAME} !/phpMyAdmin-enjftfxb.*
+RewriteCond %{REQUEST_FILENAME} !/site_12_1.*
+RewriteCond %{REQUEST_FILENAME} !/statistik.*
+RewriteCond %{REQUEST_FILENAME} !/Connections.*
+RewriteCond %{REQUEST_FILENAME} !/.htaccess|/401error.htm|/blank.htm|/favicon.ico|/google.php|/google02fd1b76945c579f.html|/index.php|/robots.txt
+RewriteCond %{REQUEST_FILENAME} !/xml.*
+RewriteCond %{REQUEST_FILENAME} !/mtool.*
+RewriteCond %{REQUEST_FILENAME} !/myenjoyliving.*
+RewriteCond %{REQUEST_FILENAME} !/private.*
+RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
+RewriteCond %{REQUEST_FILENAME} !/web.*
+RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteRule ^(.*).html/([0-9]+)$ /site_12_1/basislayout.php?googleurl=/$1.html&subpage=$2 [QSA,L]
+
+RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
+RewriteCond %{HTTP_HOST} !^www.tsrm.at$ [NC]
+RewriteCond %{REQUEST_FILENAME} !^.*(gif|jpg|png|css|ico|txt)$
+RewriteCond %{REQUEST_FILENAME} !/phpMyAdmin-enjftfxb.*
+RewriteCond %{REQUEST_FILENAME} !/site_12_1.*
+RewriteCond %{REQUEST_FILENAME} !/statistik.*
+RewriteCond %{REQUEST_FILENAME} !/Connections.*
+RewriteCond %{REQUEST_FILENAME} !/.htaccess|/401error.htm|/blank.htm|/favicon.ico|/google.php|/google02fd1b76945c579f.html|/index.php|/robots.txt
+RewriteCond %{REQUEST_FILENAME} !/xml.*
+RewriteCond %{REQUEST_FILENAME} !/mtool.*
+RewriteCond %{REQUEST_FILENAME} !/myenjoyliving.*
+RewriteCond %{REQUEST_FILENAME} !/private.*
+RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
+RewriteCond %{REQUEST_FILENAME} !/web.*
+RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteRule ^(.*).html/([0-9]+),([0-9]+)$ /site_12_1/basislayout.php?googleurl=/$1.html&subpage=$2&getcode=$3 [QSA,L]
+
+RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
+RewriteCond %{HTTP_HOST} !^www.tsrm.at$ [NC]
+RewriteCond %{REQUEST_FILENAME} !^.*(gif|jpg|png|css|ico|txt)$
+RewriteCond %{REQUEST_FILENAME} !/phpMyAdmin-enjftfxb.*
+RewriteCond %{REQUEST_FILENAME} !/site_12_1.*
+RewriteCond %{REQUEST_FILENAME} !/statistik.*
+RewriteCond %{REQUEST_FILENAME} !/Connections.*
+RewriteCond %{REQUEST_FILENAME} !/.htaccess|/401error.htm|/blank.htm|/favicon.ico|/google.php|/google02fd1b76945c579f.html|/index.php|/robots.txt
+RewriteCond %{REQUEST_FILENAME} !/xml.*
+RewriteCond %{REQUEST_FILENAME} !/mtool.*
+RewriteCond %{REQUEST_FILENAME} !/myenjoyliving.*
+RewriteCond %{REQUEST_FILENAME} !/private.*
+RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
+RewriteCond %{REQUEST_FILENAME} !/web.*
+RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteRule ^(.*).html/(.*)$ /site_12_1/basislayout.php?googleurl=/$1.html/$2 [QSA,L]
+
+
+###horoskope
+RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
+RewriteCond %{HTTP_HOST} !^www.tsrm.at$ [NC]
+RewriteCond %{REQUEST_FILENAME} !^.*(gif|jpg|png|css|ico|txt)$
+RewriteCond %{REQUEST_FILENAME} !/phpMyAdmin-enjftfxb.*
+RewriteCond %{REQUEST_FILENAME} !/site_12_1.*
+RewriteCond %{REQUEST_FILENAME} !/statistik.*
+RewriteCond %{REQUEST_FILENAME} !/Connections.*
+RewriteCond %{REQUEST_FILENAME} !/.htaccess|/401error.htm|/blank.htm|/favicon.ico|/google.php|/google02fd1b76945c579f.html|/index.php|/robots.txt
+RewriteCond %{REQUEST_FILENAME} !/xml.*
+RewriteCond %{REQUEST_FILENAME} !/mtool.*
+RewriteCond %{REQUEST_FILENAME} !/myenjoyliving.*
+RewriteCond %{REQUEST_FILENAME} !/private.*
+RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
+RewriteCond %{REQUEST_FILENAME} !/web.*
+RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteRule ^(.*),(.*)$ /site_12_1/basislayout.php?googleurl=/$1/&zodiacID=$2 [QSA,L]
+
+RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
+RewriteCond %{HTTP_HOST} !^www.tsrm.at$ [NC]
+RewriteCond %{REQUEST_FILENAME} !^.*(gif|jpg|png|css|ico|txt)$
+RewriteCond %{REQUEST_FILENAME} !/phpMyAdmin-enjftfxb.*
+RewriteCond %{REQUEST_FILENAME} !/site_12_1.*
+RewriteCond %{REQUEST_FILENAME} !/statistik.*
+RewriteCond %{REQUEST_FILENAME} !/Connections.*
+RewriteCond %{REQUEST_FILENAME} !/.htaccess|/401error.htm|/blank.htm|/favicon.ico|/google.php|/google02fd1b76945c579f.html|/index.php|/robots.txt
+RewriteCond %{REQUEST_FILENAME} !/xml.*
+RewriteCond %{REQUEST_FILENAME} !/mtool.*
+RewriteCond %{REQUEST_FILENAME} !/myenjoyliving.*
+RewriteCond %{REQUEST_FILENAME} !/private.*
+RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
+RewriteCond %{REQUEST_FILENAME} !/web.*
+RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteRule ^(.*)horoskope/(.*)$ /site_12_1/basislayout.php?googleurl=/$1horoskope/$2 [QSA,L]
+
+
+
+###alle alten, die nicht mit html oder so enden.
+RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
+RewriteCond %{HTTP_HOST} !^www.tsrm.at$ [NC]
+RewriteCond %{REQUEST_FILENAME} !^.*(gif|jpg|png|css|ico|txt)$
+RewriteCond %{REQUEST_FILENAME} !/phpMyAdmin-enjftfxb.*
+RewriteCond %{REQUEST_FILENAME} !/site_12_1.*
+RewriteCond %{REQUEST_FILENAME} !/statistik.*
+RewriteCond %{REQUEST_FILENAME} !/Connections.*
+RewriteCond %{REQUEST_FILENAME} !/.htaccess|/401error.htm|/blank.htm|/favicon.ico|/google.php|/google02fd1b76945c579f.html|/index.php|/robots.txt
+RewriteCond %{REQUEST_FILENAME} !/xml.*
+RewriteCond %{REQUEST_FILENAME} !/mtool.*
+RewriteCond %{REQUEST_FILENAME} !/myenjoyliving.*
+RewriteCond %{REQUEST_FILENAME} !/private.*
+RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
+RewriteCond %{REQUEST_FILENAME} !/web.*
+RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteRule ^(.*)/([0-9]+)$ /site_12_1/basislayout.php?googleurl=/$1.html&subpage=$2 [QSA,L]
+
+RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
+RewriteCond %{HTTP_HOST} !^www.tsrm.at$ [NC]
+RewriteCond %{REQUEST_FILENAME} !^.*(gif|jpg|png|css|ico|txt)$
+RewriteCond %{REQUEST_FILENAME} !/phpMyAdmin-enjftfxb.*
+RewriteCond %{REQUEST_FILENAME} !/site_12_1.*
+RewriteCond %{REQUEST_FILENAME} !/statistik.*
+RewriteCond %{REQUEST_FILENAME} !/Connections.*
+RewriteCond %{REQUEST_FILENAME} !/.htaccess|/401error.htm|/blank.htm|/favicon.ico|/google.php|/google02fd1b76945c579f.html|/index.php|/robots.txt
+RewriteCond %{REQUEST_FILENAME} !/xml.*
+RewriteCond %{REQUEST_FILENAME} !/mtool.*
+RewriteCond %{REQUEST_FILENAME} !/myenjoyliving.*
+RewriteCond %{REQUEST_FILENAME} !/private.*
+RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
+RewriteCond %{REQUEST_FILENAME} !/web.*
+RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteRule ^(.*)/(.*)$ /site_12_1/basislayout.php?googleurl=/$1/$2 [QSA,L]
+
+RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
+RewriteCond %{HTTP_HOST} !^www.tsrm.at$ [NC]
+RewriteCond %{REQUEST_FILENAME} !^.*(gif|jpg|png|css|ico|txt)$
+RewriteCond %{REQUEST_FILENAME} !/phpMyAdmin-enjftfxb.*
+RewriteCond %{REQUEST_FILENAME} !/site_12_1.*
+RewriteCond %{REQUEST_FILENAME} !/statistik.*
+RewriteCond %{REQUEST_FILENAME} !/Connections.*
+RewriteCond %{REQUEST_FILENAME} !/.htaccess|/401error.htm|/blank.htm|/favicon.ico|/google.php|/google02fd1b76945c579f.html|/index.php|/robots.txt
+RewriteCond %{REQUEST_FILENAME} !/xml.*
+RewriteCond %{REQUEST_FILENAME} !/mtool.*
+RewriteCond %{REQUEST_FILENAME} !/myenjoyliving.*
+RewriteCond %{REQUEST_FILENAME} !/private.*
+RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
+RewriteCond %{REQUEST_FILENAME} !/web.*
+RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteRule ^(.*)$ /site_12_1/basislayout.php?googleurl=/$1 [QSA,L]
+
+
+
+
+
+####error dok
+ErrorDocument 404 /site_12_1/basislayout.php?googleurl=/home.html

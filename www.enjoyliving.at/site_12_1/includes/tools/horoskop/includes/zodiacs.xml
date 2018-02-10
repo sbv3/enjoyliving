@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?> 
+<root>
+ <zodiacs>
+  <zodiac id="widder" type="normal">
+   <name>Widder</name>
+  </zodiac>
+  <zodiac id="stier" type="normal">
+   <name>Stier</name>
+  </zodiac>
+  <zodiac id="zwillinge" type="normal">
+   <name>Zwillinge</name>
+  </zodiac>
+  <zodiac id="krebs" type="normal">
+   <name>Krebs</name>
+  </zodiac>
+  <zodiac id="loewe" type="normal">
+   <name>Löwe</name>
+  </zodiac>
+  <zodiac id="jungfrau" type="normal">
+   <name>Jungfrau</name>
+  </zodiac>
+  <zodiac id="waage" type="normal">
+   <name>Waage</name>
+  </zodiac>
+  <zodiac id="skorpion" type="normal">
+   <name>Skorpion</name>
+  </zodiac>
+  <zodiac id="schuetze" type="normal">
+   <name>Schütze</name>
+  </zodiac>
+  <zodiac id="steinbock" type="normal">
+   <name>Steinbock</name>
+  </zodiac>
+  <zodiac id="wassermann" type="normal">
+   <name>Wassermann</name>
+  </zodiac>
+  <zodiac id="fische" type="normal">
+   <name>Fische</name>
+  </zodiac>
+  <zodiac id="ratte" type="chinese">
+   <name>Ratte</name>
+  </zodiac>
+  <zodiac id="bueffel" type="chinese">
+   <name>Büffel</name>
+  </zodiac>
+  <zodiac id="tiger" type="chinese">
+   <name>Tiger</name>
+  </zodiac>
+  <zodiac id="hase" type="chinese">
+   <name>Hase</name>
+  </zodiac>
+  <zodiac id="drache" type="chinese">
+   <name>Drache</name>
+  </zodiac>
+  <zodiac id="schlange" type="chinese">
+   <name>Schlange</name>
+  </zodiac>
+  <zodiac id="pferd" type="chinese">
+   <name>Pferd</name>
+  </zodiac>
+  <zodiac id="ziege" type="chinese">
+   <name>Ziege</name>
+  </zodiac>
+  <zodiac id="affe" type="chinese">
+   <name>Affe</name>
+  </zodiac>
+  <zodiac id="hahn" type="chinese">
+   <name>Hahn</name>
+  </zodiac>
+  <zodiac id="hund" type="chinese">
+   <name>Hund</name>
+  </zodiac>
+  <zodiac id="schwein" type="chinese">
+   <name>Schwein</name>
+  </zodiac>
+ </zodiacs>
+</root>

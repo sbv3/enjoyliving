@@ -1,0 +1,8 @@
+AuthUserFile /home/enjftfxb/www.enjoyliving.at/Connections/.htpasswd
+AuthGroupFile /dev/null
+AuthName "Passwortgeschuetzter Bereich!"
+AuthType Basic
+<Limit GET POST>
+require valid-user
+</Limit>
+

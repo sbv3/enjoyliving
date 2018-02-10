@@ -1,0 +1,36 @@
+<body>
+<span id="status"></span></p>
+<script src="../src/swfstore.js"></script>
+
+<script type="text/javascript">
+
+	var mySwfStore = new SwfStore({
+		
+		namespace: 'pc_id', // the this must match all other instances that want to share cookies
+		
+		swf_url: '../storage.swf', // to work cross-domain, use the same absolute url on both pages (meaning http://site.com/path/to/store.swf not just /path/to.store.swf)
+		
+		debug: false, // depending on your browser, this will either go to the console or the bottom of the page.
+		
+		onready: function(){
+			var pc_id=mySwfStore.get('myValue');
+			// read the existing value (if any)
+			if(pc_id)
+			{
+				document.getElementById("status").innerHTML ="read: "+mySwfStore.get('myValue');
+			}
+			else
+			{
+			// set up an onclick handler to save the text to the swfStore whenever the Save button is clicked
+			// IE converts null to "null", so we're adding an `or "" ` to the end to fix that
+				pc_id=Math.floor(Math.random()*10000000000001);
+				mySwfStore.set('myValue', pc_id);
+				document.getElementById("status").innerHTML="write: "+val(mySwfStore.get('myValue'));
+			}
+		},
+		
+		onerror: function(){pc_id="";
+		}
+	});
+</script>
+</body>

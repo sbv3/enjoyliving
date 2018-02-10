@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?> 
+<root>
+ <info baseurl="http://api.viversum.de/xml/" apikey="?apikey=6497f017cc4594fb777ae56904234f62" />
+ <horoscopes>
+  <horoscope id="tageshoroskop">
+   <name>Tageshoroskop</name>
+   <url>horoscopeDayFormal</url>
+  </horoscope>
+  <horoscope id="wochenhoroskop">
+   <name>Wochenhoroskop</name>
+   <url>horoscopeWeekFormal</url>
+  </horoscope>
+  <horoscope id="stylingwochenhoroskop">
+   <name>Styling-Wochenhoroskop</name>
+   <url>horoscopeWeekStyleFormalFemale</url>
+  </horoscope>
+  <horoscope id="erotikwochenhoroskop">
+   <name>Erotik-Wochenhoroskop</name>
+   <url>horoscopeWeekEroticFormal</url>
+  </horoscope>
+  <horoscope id="monatshoroskop">
+   <name>Monatshoroskop</name>
+   <url>horoscopeMonthFormal</url>
+  </horoscope>
+  <horoscope id="chinesischesmonatshoroskop">
+   <name>Chinesisches Monatshoroskop</name>
+   <url>horoscopeMonthChinaFormal</url>
+  </horoscope>
+  <horoscope id="beautymonatshoroskop">
+   <name>Beauty-Monatshoroskop</name>
+   <url>horoscopeMonthBeautyFormalFemale</url>
+  </horoscope>
+  <horoscope id="jahreshoroskop">
+   <name>Jahreshoroskop</name>
+   <url>horoscopeYearFormal</url>
+  </horoscope>
+  <horoscope id="kochtypologie">
+   <name>Koch-Typologie</name>
+   <url>typologyCookFormal</url>
+  </horoscope>
+  <horoscope id="diaettypologie">
+   <name>Diät-Typologie</name>
+   <url>typologyDietFormalFemale</url>
+  </horoscope>
+  <horoscope id="sporttypologie">
+   <name>Sport-Typologie</name>
+   <url>typologySportFormal</url>
+  </horoscope>
+  <horoscope id="wellnesstypologie">
+   <name>Wellness-Typologie</name>
+   <url>typologyWellnessFormal</url>
+  </horoscope>
+  <horoscope id="beautytypologie">
+   <name>Beauty-Typologie</name>
+   <url>typologyBeautyFormal</url>
+  </horoscope>
+  <horoscope id="dessoustypologie">
+   <name>Dessous-Typologie</name>
+   <url>typologyLingerieFormalFemale</url>
+  </horoscope>
+  <horoscope id="partnerschaftstypologie">
+   <name>Partnerschafts-Typologie</name>
+   <url>typologyPartnershipFormal</url>
+  </horoscope>
+  <horoscope id="hochzeitstypologie">
+   <name>Hochzeits-Typologie</name>
+   <url>typologyMarriageFormal</url>
+  </horoscope>
+  <horoscope id="kindertypologie">
+   <name>Kinder-Typologie</name>
+   <url>typologyChildFormal</url>
+  </horoscope>
+  <horoscope id="wohntypologie">
+   <name>Wohn-Typologie</name>
+   <url>typologyHabitationFormal</url>
+  </horoscope>
+  <horoscope id="gartentypologie">
+   <name>Garten-Typologie</name>
+   <url>typologyGardenFormal</url>
+  </horoscope>
+  <horoscope id="geschenketypologie">
+   <name>Geschenke-Typologie</name>
+   <url>typologyPresentFormal</url>
+  </horoscope>
+ </horoscopes>
+ <calendars>
+  <calendar id="monatmondkalender">
+   <name>Mondkalender monatlich</name>
+   <url>calendarLunar</url>
+   <caption>calendarLunarCaption</caption>
+  </calendar>
+ </calendars>
+</root>

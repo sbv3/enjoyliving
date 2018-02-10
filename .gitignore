@@ -1,0 +1,32 @@
+# https://git-scm.com/docs/gitignore
+# https://help.github.com/articles/ignoring-files
+# Example.gitignore files : https://github.com/github/gitignore
+_notes/
+/bower_components/
+/node_modules/
+**.htpasswd
+**pwd.php
+/www.enjoyliving.at/site_12_1/google.php
+/www.enjoyliving.at/site_12_1/make_rss.php
+/www.enjoyliving.at/site_12_1/virag-keg/
+/www.enjoyliving.at/site_12_1/tests/
+/www.enjoyliving.at/site_12_1/Menumaker/
+/www.enjoyliving.at/site_12_1/tonninger.html
+/www.enjoyliving.at/site_11_1/
+/www.enjoyliving.at/papa/
+/www.enjoyliving.at/page/
+/www.enjoyliving.at/.settings/
+/www.enjoyliving.at/SpryAssets/
+/www.enjoyliving.at/xml/
+/www.enjoyliving.at/Connections/usrdb_enjftfxb2_12_1_test.php
+*.log
+www.enjoyliving.at/google02fd1b76945c579f.html
+.bash_history
+.claudia_vars
+.office@enjoyliving.at_vars
+.profile
+.qmail
+.qmail-enjoyliving
+php.ini.old_ph_update
+php5.2.ini
+bfg-1.13.0.jar
