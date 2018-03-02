@@ -183,6 +183,9 @@ if($imagetypeselect!=1){
 	 <div style='padding:4px;border-style:solid;border-width:1px;border-color:#CCCCCC;background-color:#F0F3FA;margin-top:20px;'> <b>Verzeichnisauswahl:</b><br />
 		<form name="form_year" method="post">
 			   <select name="jahr" style="width:200px" onchange="document.forms['form_year'].submit()">
+				   <option value=2018 <? if($jahr==2018){echo"selected";}?>>2018</option>
+				   <option value=2017 <? if($jahr==2017){echo"selected";}?>>2017</option>
+				   <option value=2016 <? if($jahr==2016){echo"selected";}?>>2016</option>
 				   <option value=2015 <? if($jahr==2015){echo"selected";}?>>2015</option>
 				   <option value=2014 <? if($jahr==2014){echo"selected";}?>>2014</option>
 				   <option value=2013 <? if($jahr==2013){echo"selected";}?>>2013</option>

@@ -2,16 +2,17 @@ RewriteEngine On
 
 Options -Indexes
 
+
 ##RewriteCond %{HTTP_HOST} ^(www.gesundeseiten.at)$ [NC]
 ##RewriteRule ^.*stage1.*$ /Connections/xxx.php?stage=%1 [L]
 ##RewriteRule ^.*/Connections/xxx.*$ /stage1 [L]
 
 ## ACHTUNG: Funkt nicht bei WWW.virag-keg.com sondern nur bei virag-keg.com
 ##RewriteCond %{HTTP_HOST} ^(virag-keg.com)$ [NC]
-##RewriteRule ^(.*)$ http://www.enjoyliving.at/site_12_1/virag-keg/$1 [R=301,L]
+##RewriteRule ^(.*)$ http://www.enjoyliving.at/site_12_1/virag-keg/$1 [R=302,L]
 
 
-###Wenn die Seite keine www.gesundeseiten.at ist, dann schreib sie um.
+##Wenn die Seite keine www.gesundeseiten.at ist, dann schreib sie um.
 ##Wenn die Seite eine www.gesundeseiten.at/gesundheits-magazin ist, schreib sie auch um. 
 
 RewriteRule ^login.php$ /site_12_1/admin/Login.php [QSA,L]
@@ -28,19 +29,21 @@ RewriteCond %{HTTP_HOST} !^(www.gesundeseiten.at)$ [NC]
 RewriteCond %{HTTP_HOST} !^(www.tsm-law.at)$ [NC]
 RewriteCond %{HTTP_HOST} !^(www.tsm-law.eu)$ [NC]
 RewriteCond %{HTTP_HOST} !^(www.tsrm.at)$ [NC]
-RewriteRule ^(.*)$ http://www.enjoyliving.at/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} !^(www.genussmoment.at)$ [NC]
+RewriteCond %{HTTP_HOST} !^(www.enjoyliving.at/magazin/wordpress)$ [NC]
+RewriteRule ^(.*)$ http://www.enjoyliving.at/$1 [R=302,L]
 
 RewriteCond %{HTTP_HOST} ^(www.gesundeseiten.at)$ [NC]
-RewriteRule ^/([a-z0-9_-])-magazin(.*)$ http://www.enjoyliving.at/$1-magazin$2 [R=301,L]
+RewriteRule ^/([a-z0-9_-])-magazin(.*)$ http://www.enjoyliving.at/$1-magazin$2 [R=302,L]
 
 RewriteCond %{HTTP_HOST} ^(www.enjoyliving.at)$ [NC]
-RewriteRule ^anbieter/(.*)$ http://www.gesundeseiten.at/anbieter/$1 [R=301,L]
+RewriteRule ^anbieter/(.*)$ http://www.gesundeseiten.at/anbieter/$1 [R=302,L]
 
 RewriteCond %{HTTP_HOST} ^(www.tsm-law.at)$ [NC]
-RewriteRule ^(.*)$ http://www.tsrm.at/$1 [R=301,L]
+RewriteRule ^(.*)$ http://www.tsrm.at/$1 [R=302,L]
 
 RewriteCond %{HTTP_HOST} ^(www.tsm-law.eu)$ [NC]
-RewriteRule ^(.*)$ http://www.tsrm.at/$1 [R=301,L]
+RewriteRule ^(.*)$ http://www.tsrm.at/$1 [R=302,L]
 
 
 #############################################VERZEICHNIS NEU
@@ -231,7 +234,7 @@ RewriteCond %{REQUEST_FILENAME} !/phpMyAdmin-enjftfxb.*
 RewriteCond %{REQUEST_FILENAME} !/site_12_1.*
 RewriteCond %{REQUEST_FILENAME} !/statistik.*
 RewriteCond %{REQUEST_FILENAME} !/Connections.*
-RewriteCond %{REQUEST_FILENAME} !/.htaccess|/401error.htm|/blank.htm|/favicon.ico|/google.php|/google02fd1b76945c579f.html|/index.php|/robots.txt
+RewriteCond %{REQUEST_FILENAME} /.htaccess|/401error.htm|/blank.htm|/favicon.ico|/google.php|/google02fd1b76945c579f.html|/index.php|/robots.txt
 RewriteCond %{REQUEST_FILENAME} !/xml.*
 RewriteCond %{REQUEST_FILENAME} !/mtool.*
 RewriteCond %{REQUEST_FILENAME} !/myenjoyliving.*
@@ -239,6 +242,7 @@ RewriteCond %{REQUEST_FILENAME} !/private.*
 RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
 RewriteCond %{REQUEST_FILENAME} !/web.*
 RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteCond %{REQUEST_FILENAME} !/magazin/wordpress/.*
 RewriteRule ^(.*).php$ /site_12_1/basislayout.php?googleurl=/$1.php [QSA,L]
 
 RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
@@ -256,6 +260,7 @@ RewriteCond %{REQUEST_FILENAME} !/private.*
 RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
 RewriteCond %{REQUEST_FILENAME} !/web.*
 RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteCond %{REQUEST_FILENAME} !/magazin/wordpress/.*
 RewriteRule ^(.*).php/(.*)$ /site_12_1/basislayout.php?googleurl=/$1.php/$2 [QSA,L]
 
 
@@ -275,6 +280,7 @@ RewriteCond %{REQUEST_FILENAME} !/private.*
 RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
 RewriteCond %{REQUEST_FILENAME} !/web.*
 RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteCond %{REQUEST_FILENAME} !/magazin/wordpress/.*
 RewriteRule ^(.*).html$ /site_12_1/basislayout.php?googleurl=/$1.html [QSA,L]
 
 RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
@@ -292,6 +298,7 @@ RewriteCond %{REQUEST_FILENAME} !/private.*
 RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
 RewriteCond %{REQUEST_FILENAME} !/web.*
 RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteCond %{REQUEST_FILENAME} !/magazin/wordpress/.*
 RewriteRule ^(.*).html/([0-9]+)$ /site_12_1/basislayout.php?googleurl=/$1.html&subpage=$2 [QSA,L]
 
 RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
@@ -309,6 +316,7 @@ RewriteCond %{REQUEST_FILENAME} !/private.*
 RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
 RewriteCond %{REQUEST_FILENAME} !/web.*
 RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteCond %{REQUEST_FILENAME} !/magazin/wordpress/.*
 RewriteRule ^(.*).html/([0-9]+),([0-9]+)$ /site_12_1/basislayout.php?googleurl=/$1.html&subpage=$2&getcode=$3 [QSA,L]
 
 RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
@@ -326,6 +334,7 @@ RewriteCond %{REQUEST_FILENAME} !/private.*
 RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
 RewriteCond %{REQUEST_FILENAME} !/web.*
 RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteCond %{REQUEST_FILENAME} !/magazin/wordpress/.*
 RewriteRule ^(.*).html/(.*)$ /site_12_1/basislayout.php?googleurl=/$1.html/$2 [QSA,L]
 
 
@@ -345,6 +354,7 @@ RewriteCond %{REQUEST_FILENAME} !/private.*
 RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
 RewriteCond %{REQUEST_FILENAME} !/web.*
 RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteCond %{REQUEST_FILENAME} !/magazin/wordpress/.*
 RewriteRule ^(.*),(.*)$ /site_12_1/basislayout.php?googleurl=/$1/&zodiacID=$2 [QSA,L]
 
 RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
@@ -362,6 +372,7 @@ RewriteCond %{REQUEST_FILENAME} !/private.*
 RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
 RewriteCond %{REQUEST_FILENAME} !/web.*
 RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteCond %{REQUEST_FILENAME} !/magazin/wordpress/.*
 RewriteRule ^(.*)horoskope/(.*)$ /site_12_1/basislayout.php?googleurl=/$1horoskope/$2 [QSA,L]
 
 
@@ -382,6 +393,7 @@ RewriteCond %{REQUEST_FILENAME} !/private.*
 RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
 RewriteCond %{REQUEST_FILENAME} !/web.*
 RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteCond %{REQUEST_FILENAME} !/magazin/wordpress/.*
 RewriteRule ^(.*)/([0-9]+)$ /site_12_1/basislayout.php?googleurl=/$1.html&subpage=$2 [QSA,L]
 
 RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
@@ -399,6 +411,7 @@ RewriteCond %{REQUEST_FILENAME} !/private.*
 RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
 RewriteCond %{REQUEST_FILENAME} !/web.*
 RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteCond %{REQUEST_FILENAME} !/magazin/wordpress/.*
 RewriteRule ^(.*)/(.*)$ /site_12_1/basislayout.php?googleurl=/$1/$2 [QSA,L]
 
 RewriteCond %{HTTP_HOST} !^www.gesundeseiten.at$ [NC]
@@ -416,6 +429,7 @@ RewriteCond %{REQUEST_FILENAME} !/private.*
 RewriteCond %{REQUEST_FILENAME} !/SpryAssets.*
 RewriteCond %{REQUEST_FILENAME} !/web.*
 RewriteCond %{REQUEST_FILENAME} !/well.*
+RewriteCond %{REQUEST_FILENAME} !/magazin/wordpress/.*
 RewriteRule ^(.*)$ /site_12_1/basislayout.php?googleurl=/$1 [QSA,L]
 
 
